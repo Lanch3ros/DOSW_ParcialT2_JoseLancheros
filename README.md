@@ -5,7 +5,8 @@
 **Materia:** Desarrollo y Operaciones de Software
 **Fecha:** Abril 2026
 
-
+## DIAGRAMAS
+[DIAGRAMAS](https://lucid.app/lucidchart/5f749f8d-4f0e-4f93-bbd4-d11261856dde/edit?viewport_loc=-3175%2C-969%2C10144%2C5113%2C0_0&invitationId=inv_7272ad09-6f3a-4530-80d9-12706f98182e)
 
 ## LucidChart
 
