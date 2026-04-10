@@ -1,4 +1,6 @@
 package edu.dosw.parcial.core.models;
 
-public class UserRole {
+public enum UserRole {
+    ROLE_CLIENT,
+    ROLE_CAFETERIA_LADY
 }
