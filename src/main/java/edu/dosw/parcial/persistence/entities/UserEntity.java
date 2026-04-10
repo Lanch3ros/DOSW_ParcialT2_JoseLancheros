@@ -4,7 +4,6 @@ import edu.dosw.parcial.core.models.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "users")
@@ -12,8 +11,7 @@ import java.util.UUID;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private long id;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
