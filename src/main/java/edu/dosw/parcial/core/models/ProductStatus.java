@@ -1,4 +1,6 @@
 package edu.dosw.parcial.core.models;
 
-public class ProductStatus {
+public enum ProductStatus {
+    AVAILABLE,
+    UNAVAILABLE
 }
