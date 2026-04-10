@@ -1,4 +1,8 @@
 package edu.dosw.parcial.core.models;
 
-public class OrderStatus {
+public enum OrderStatus {
+    CREADO,
+    EN_PREPARACION,
+    ENTREGADO,
+    CANCELADO
 }
