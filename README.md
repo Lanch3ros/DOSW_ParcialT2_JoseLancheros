@@ -315,3 +315,109 @@ Response 200 :
 #### H) codigos HTTP
     Happy Path: 200 
     Stock insuficiente: 409 
+
+## punto numero 2 
+#### La diferencia clave es que las validaciones de input ocurren antes de tocar la lógica de negocio y se pueden verificar sin algo externo, mientras que las validacines de negocio requieren conocer el contexto del sistema para poder validarse.
+
+## punto numero 3 
+#### autenticacion es el proceso de verificar la identidad de un usuario, es decir, confirmar que alguien es quien dice ser. 
+#### Autorización es el proceso de verificar qué acciones puede realizar un usuario ya autenticado.
+
+#### Integridad es la garantía de que los datos no han sido alterados o corrompidos durante su almacenamiento o transmisión. 
+
+## punto 4 
+#### diagrama de componentes
+
+## punto 5 
+#### Cuando las capas de un proyecto no están bien separadas surgen varios problemas graves como los siguientes
+
+    Acoplamiento alto
+    Imposibilidad de testear unitariamente
+    Violación del principio de responsabilidad única (SRP) 
+    Lógica de negocio duplicada 
+    Dificultad para escalar 
+
+## punto 6
+#### diagrama de componentes especificos
+
+## punto 7 
+#### Diferencia entre Validador, Utilidad y Servicio
+    Validador es un componente que como única responsabilidad tiene que verificar que una condición del sistema o del input es válida
+    Utilidad es una clase con métodos estáticos o que no tienen lógica de negocio ni acceso a la base de datos. 
+    Servicio es el componente central de la lógica de negocio. almacena la ejecución de un caso de uso completo
+
+## punto 8 
+#### Diagrama de Clases y Patrón de Estados
+
+## punto 9 
+#### Diagrama Entidad-Relación
+
+## punto 10
+#### Índices para mejorar el rendimiento
+#### ### Índice 1: idx_products_qr_code
+    CREATE UNIQUE INDEX idx_products_qr_code ON products(qr_code);
+
+
+Justificación técnica: La funcionalidad principal de ECIXPRESS es consultar productos mediante escaneo de código QR.esta consulta realiza un full table scan en cada escaneo. Al ser qr_code el campo de búsqueda más usado un índice único sobre este campo vuelve la búsqueda menos compleja 
+
+### Índice 2: `idx_orders_user_id_status`
+
+    CREATE INDEX idx_orders_user_id_status ON orders(user_id, status);
+Justificación técnica: Existe una regla de negocio crítica que indica que un usuario solo puede tener un pedido activo.  el motor puede resolver la consulta directamente desde el índice sin acceder a los datos de la tabla lo que reduce mucho el tiempo de respuesta 
+
+
+## punto 11
+#### TDD en la funcionalidad "Solicitar Pedido"
+#### Fases de TDD aplicadas
+Fase RED: Escribir pruebas que fallan primero:
+Antes de escribir una sola línea del OrderService, se escriben los casos de prueba con Mockito que describen el comportamiento esperado. Al ejecutarlos, todos fallan porque el servicio aún no existe. Esto confirma que las pruebas son válidas y detectan la ausencia de implementación.
+
+Fase GREEN Implementar lo mínimo para pasar las pruebas
+Se implementa el OrderService.createOrder con el código más simple posible que haga pasar todos los tests escritos en la fase RED. 
+
+Fase REFACTOR Mejorar el código manteniendo los tests en verde:
+Con los tests en verde como red de seguridad, se mejora la estructura del código
+como validaciones clave tenemos varias las cuales son las siguentes
+
+## punto 12
+#### Las pruebas unitarias oficializan las reglas de negocio en código. Cada test representa un tipo de contrato: en donde nos dan estas condiciones de entrada, el sistema debe producir exactamente este resultado. 
+Para la integridad del sistema, las pruebas de integración verifican que la interacción entre capas funciona correctamente
+En el contexto de ECIXPRESS, las pruebas garantizan por ejemplo que la regla de "un pedido activo por usuario" nunca pueda ser violada, que el stock nunca quede en negativo, y que un pedido cancelado nunca pueda volver a CREADO. Sin pruebas esto depende solo de que el programador haga todo bien a la primera y que no se le olvide nada
+## punto 13
+#### Un pipeline de CI/CD automatiza el ciclo de vida de la aplicación desde que el código se sube al repositorio hasta que se despliega en producción. Las etapas principales son:
+    1. Checkout: El pipeline descarga el código fuente del repositorio en la máquina del agente de CI. 
+    2. Build o Compilación:Se compila el código fuente y se verifica que no haya errores de sintaxis ni dependencias faltantes. 
+    3. Test (Pruebas): Se ejecutan todas las pruebas unitarias y de integración.
+    4. Analysis (Análisis estático): Se analiza la calidad del código con herramientas como SonarQube. 
+    5. Package (Empaquetado): Se genera el artefacto desplegable (JAR en Spring Boot)
+    6. Deploy (Despliegue): El artefacto generado se despliega en el servidor de destino 
+
+## punto 14
+#### ¿Qué sucede si una prueba falla en el pipeline? ¿Debe permitirse el despliegue?
+     No debe permitirse el despliegue bajo ninguna circunstancia cuando una prueba falla
+    Una prueba fallida significa que el sistema no se comporta como se especificó.
+## punto 15
+#### a. ¿Qué información SÍ debería registrarse?
+
+- Timestamp exacto de cada evento 
+- Nivel del log: INFO para flujos normales
+- Nombre del servicio o clase que generó el log
+- ID de correlación 
+- Acción ejecutada: Creando pedido para usuario 
+- Resultado de la operación
+- Mensajes de error 
+- Códigos de error de respuesta HTTP
+- Tiempos de respuesta de operaciones críticas
+
+### b. ¿Qué NO debería registrarse (por seguridad)?
+
+- Contraseñas
+- Tokens JWT completos 
+- Números de tarjeta de crédito o datos financieros 
+- Datos personales completos como número de cédula o dirección
+- Respuestas completas de autenticación 
+- Secretos de configuración como API keys o credenciales 
+- Información de sesión que pueda ser reutilizada para suplantación
+## punto 16 
+#### 
+    
