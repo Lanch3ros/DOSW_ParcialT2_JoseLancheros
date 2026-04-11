@@ -6,7 +6,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/doswdb
     driver-class-name: org.postgresql.Driver
     username: postgres
-    password: tu_password
+    password: postgres
 
   jpa:
     hibernate:
