@@ -17,6 +17,10 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
+jwt:
+  secret: "dosw-ecixpress-secret-key-must-be-at-least-256-bits-long-for-hs256"
+  expiration: 86400000 # 24 horas en milisegundos
+
 server:
   port: 8081
 
