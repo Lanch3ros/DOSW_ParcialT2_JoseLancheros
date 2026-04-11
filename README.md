@@ -120,6 +120,7 @@ mvn jacoco:report         # generar reporte HTML en target/site/jacoco/index.htm
 > Autenticarse con el botón **Authorize** pegando el JWT obtenido del endpoint `/api/auth/login`.
 
 ![Swagger UI](docs/images/SwaggerUI.png)
+![AuthorizeSuccess.png](docs/images/AuthorizeSuccess.png)
 
 ---
 
@@ -127,11 +128,9 @@ mvn jacoco:report         # generar reporte HTML en target/site/jacoco/index.htm
 
 ### Arquitectura / Componentes
 
-![LucidChart](docs/images/LucidChart.png)
 
 ### Diseños de interfaz (Figma)
 
-![Figma](docs/images/Figma.png)
 
 ---
 
@@ -139,152 +138,31 @@ mvn jacoco:report         # generar reporte HTML en target/site/jacoco/index.htm
 
 ### 1. Registro de usuario
 
-**Request:**
-```http
-POST /api/auth/register
-Content-Type: application/json
+**Request:** POST /api/auth/register
 
-{
-  "fullName": "Jose Lancheros",
-  "email": "jose@eci.edu.co",
-  "password": "Password123"
-}
-```
-
-**Response `201 Created`:**
-```json
-{
-  "id": "1",
-  "fullName": "Jose Lancheros",
-  "email": "jose@eci.edu.co",
-  "role": "ROLE_CLIENT"
-}
-```
+![RegistroUsuario.png](docs/images/UserRegister.png)
 
 ---
 
 ### 2. Login
 
-**Request:**
-```http
-POST /api/auth/login
-Content-Type: application/json
+**Request:** POST /api/auth/login
 
-{
-  "email": "jose@eci.edu.co",
-  "password": "Password123"
-}
-```
-
-**Response `200 OK`:**
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiJ9...",
-  "expiresIn": 86400
-}
-```
+![Login.png](docs/images/Login.png)
 
 ---
 
 ### 3. Consultar producto por QR
 
-**Request:**
-```http
-GET /api/products/qr/QR-001
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
-```
-
-**Response `200 OK`:**
-```json
-{
-  "id": "1",
-  "name": "Café negro",
-  "description": "Café negro espresso",
-  "price": 2500,
-  "qrCode": "QR-001",
-  "stock": 10,
-  "status": "AVAILABLE"
-}
-```
+![GetProduct.png](docs/images/GetProduct.png)
 
 ---
 
 ### 4. Crear pedido
 
-**Request:**
-```http
-POST /api/orders
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
-Content-Type: application/json
+**Request:** POST /api/orders
 
-{
-  "items": [
-    { "qrCode": "QR-001", "quantity": 2 }
-  ]
-}
-```
-
-**Response `201 Created`:**
-```json
-{
-  "id": "1",
-  "userId": "1",
-  "status": "CREADO",
-  "total": 5000,
-  "items": [
-    {
-      "productId": "1",
-      "productName": "Café negro",
-      "quantity": 2,
-      "unitPrice": 2500,
-      "subtotal": 5000
-    }
-  ]
-}
-```
-
----
-
-### 5. Cancelar pedido
-
-**Request:**
-```http
-PATCH /api/orders/1/cancel
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
-```
-
-**Response `200 OK`:**
-```json
-{
-  "id": "1",
-  "status": "CANCELADO",
-  ...
-}
-```
-
----
-
-### 6. Cambiar estado del pedido (señora cafetería)
-
-**Request:**
-```http
-PATCH /api/orders/1/status
-Authorization: Bearer <token-ROLE_CAFETERIA_LADY>
-Content-Type: application/json
-
-{
-  "status": "EN_PREPARACION"
-}
-```
-
-**Response `200 OK`:**
-```json
-{
-  "id": "1",
-  "status": "EN_PREPARACION",
-  ...
-}
-```
+![CreateOrder.png](docs/images/CreateOrder.png)
 
 ---
 
