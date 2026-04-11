@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,9 +25,9 @@ public class OrderController {
     @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<OrderResponse> createOrder(
             @Valid @RequestBody CreateOrderRequest request,
-            @AuthenticationPrincipal UserDetails userDetails) {
-        log.info("POST /api/orders - usuario: {}", userDetails.getUsername());
-        OrderResponse response = orderService.createOrder(request, userDetails.getUsername());
+            @AuthenticationPrincipal String email) {
+        log.info("POST /api/orders - usuario: {}", email);
+        OrderResponse response = orderService.createOrder(request, email);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -36,9 +35,9 @@ public class OrderController {
     @PreAuthorize("hasRole('CLIENT')")
     public ResponseEntity<OrderResponse> cancelOrder(
             @PathVariable Long id,
-            @AuthenticationPrincipal UserDetails userDetails) {
-        log.info("PATCH /api/orders/{}/cancel - usuario: {}", id, userDetails.getUsername());
-        OrderResponse response = orderService.cancelOrder(id, userDetails.getUsername());
+            @AuthenticationPrincipal String email) {
+        log.info("PATCH /api/orders/{}/cancel - usuario: {}", id, email);
+        OrderResponse response = orderService.cancelOrder(id, email);
         return ResponseEntity.ok(response);
     }
 
