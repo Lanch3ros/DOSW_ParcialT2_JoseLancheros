@@ -6,12 +6,16 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
+@Table(
+    name = "users",
+    indexes = @Index(name = "idx_users_email", columnList = "email")
+)
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class UserEntity {
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
@@ -26,6 +30,11 @@ public class UserEntity {
     @Column(nullable = false)
     private UserRole role;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    private void prePersist() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
