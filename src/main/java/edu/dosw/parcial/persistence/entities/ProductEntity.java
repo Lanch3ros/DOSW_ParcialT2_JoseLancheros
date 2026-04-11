@@ -6,23 +6,27 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "products")
+@Table(
+    name = "products",
+    indexes = @Index(name = "idx_products_qr_code", columnList = "qr_code")
+)
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class ProductEntity {
 
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    @Column(columnDefinition = "Texto")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
     private BigDecimal price;
 
-    @Column(name = "qr_code", nullable = false)
+    @Column(name = "qr_code", nullable = false, unique = true)
     private String qrCode;
 
     @Column(nullable = false)
