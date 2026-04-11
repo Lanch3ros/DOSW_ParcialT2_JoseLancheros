@@ -19,28 +19,9 @@
 
 ![Figma.png](docs/images/Figma.png)
 
+---
 
-### 16. FRONT FIGMA 
-En Figma diseñamos la interfaz del sistema teniendo en cuenta los colores propuestos en el enunciado, principalmente naranjas, amarillos y blancos.
-A partir de estos colores, buscamos darle al diseño un estilo un poco retro, para que se viera llamativo. Además, incluimos un personaje que se relaciona
-por su estetica de café dando a entender que esta unido a el mundo de las caferías y así se entienda mucho más facil la unión de las 
-diversas cafeterías que existen en la universidad, y en el logo tambien se incorpora elementos inspirados en los códigos QR, reforzando la idea principal de la
-aplicación. 
-
-# INICIO DE SESIÓN
-![InicioSesión.png](docs/images/Figma%20Front/InicioSesi%C3%B3n.png)
-
-# REGISTRO
-![Registro.png](docs/images/Figma%20Front/Registro.png)
-
-# CREACION DE PEDIDO
-![Carrito.png](docs/images/Figma%20Front/Carrito.png)
-
-# SELECCIÓN
-![Seleccion.png](docs/images/Figma%20Front/Seleccion.png)
-
-### LINK FIGMA: https://www.figma.com/proto/WJZ1VmPNrYJmA6uL27ftHQ/Parcial-2T---Dana-Leal?node-id=19-517&p=f&t=WdSi16gHOLRNkguB-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=19%3A517
-## Teoria
+# PARTE TEÓRICA
 
 ## punto 1
 ## funcionalidad numero 1
@@ -352,6 +333,7 @@ Response 200 :
 
 ## punto 4 
 #### diagrama de componentes
+![DiaComp.png](docs/uml/DiaComp.png)
 
 ## punto 5 
 #### Cuando las capas de un proyecto no están bien separadas surgen varios problemas graves como los siguientes
@@ -408,6 +390,7 @@ como validaciones clave tenemos varias las cuales son las siguentes
 #### Las pruebas unitarias oficializan las reglas de negocio en código. Cada test representa un tipo de contrato: en donde nos dan estas condiciones de entrada, el sistema debe producir exactamente este resultado. 
 Para la integridad del sistema, las pruebas de integración verifican que la interacción entre capas funciona correctamente
 En el contexto de ECIXPRESS, las pruebas garantizan por ejemplo que la regla de "un pedido activo por usuario" nunca pueda ser violada, que el stock nunca quede en negativo, y que un pedido cancelado nunca pueda volver a CREADO. Sin pruebas esto depende solo de que el programador haga todo bien a la primera y que no se le olvide nada
+
 ## punto 13
 #### Un pipeline de CI/CD automatiza el ciclo de vida de la aplicación desde que el código se sube al repositorio hasta que se despliega en producción. Las etapas principales son:
     1. Checkout: El pipeline descarga el código fuente del repositorio en la máquina del agente de CI. 
@@ -421,9 +404,9 @@ En el contexto de ECIXPRESS, las pruebas garantizan por ejemplo que la regla de 
 #### ¿Qué sucede si una prueba falla en el pipeline? ¿Debe permitirse el despliegue?
      No debe permitirse el despliegue bajo ninguna circunstancia cuando una prueba falla
     Una prueba fallida significa que el sistema no se comporta como se especificó.
+
 ## punto 15
 #### a. ¿Qué información SÍ debería registrarse?
-
 - Timestamp exacto de cada evento 
 - Nivel del log: INFO para flujos normales
 - Nombre del servicio o clase que generó el log
@@ -443,6 +426,26 @@ En el contexto de ECIXPRESS, las pruebas garantizan por ejemplo que la regla de 
 - Respuestas completas de autenticación 
 - Secretos de configuración como API keys o credenciales 
 - Información de sesión que pueda ser reutilizada para suplantación
-## punto 16 
-#### 
+
+## 16. FRONT FIGMA
+En Figma diseñamos la interfaz del sistema teniendo en cuenta los colores propuestos en el enunciado, principalmente naranjas, amarillos y blancos.
+A partir de estos colores, buscamos darle al diseño un estilo un poco retro, para que se viera llamativo. Además, incluimos un personaje que se relaciona
+por su estetica de café dando a entender que esta unido a el mundo de las caferías y así se entienda mucho más facil la unión de las
+diversas cafeterías que existen en la universidad, y en el logo tambien se incorpora elementos inspirados en los códigos QR, reforzando la idea principal de la
+aplicación.
+
+# INICIO DE SESIÓN
+![InicioSesión.png](docs/images/Figma%20Front/InicioSesi%C3%B3n.png)
+
+# REGISTRO
+![Registro.png](docs/images/Figma%20Front/Registro.png)
+
+# CREACION DE PEDIDO
+![Carrito.png](docs/images/Figma%20Front/Carrito.png)
+
+# SELECCIÓN
+![Seleccion.png](docs/images/Figma%20Front/Seleccion.png)
+
+### LINK FIGMA: https://www.figma.com/proto/WJZ1VmPNrYJmA6uL27ftHQ/Parcial-2T---Dana-Leal?node-id=19-517&p=f&t=WdSi16gHOLRNkguB-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=19%3A517
+
     
