@@ -533,20 +533,7 @@ Response 200 :
 
 ## punto 8 
 #### Diagrama de Clases y Patrón de Estados
-
-### Patrón de software para los estados del pedido:
-El patrón recomendado para manejar los estados del pedido es el **State Pattern** (Patrón de Estado).
-
-**¿Por qué?** El pedido tiene 4 estados y el comportamiento cambia radicalmente dependiendo del estado actual. Sin este patrón, la lógica de transiciones termina siendo una cadena de `if/else` o `switch` dentro del servicio, que crece con cada nuevo estado y es difícil de mantener.
-
-Con el State Pattern, cada estado encapsula sus propias reglas de transición:
-
-<<interface>>
-OrderState
-+ toEnPreparacion(): void
-+ toEntregado(): void
-+ cancel(): void
-
+![DiaClass (2).png](docs/uml/DiaClass%20%282%29.png)
 
 ## punto 9 
 #### Diagrama Entidad-Relación
