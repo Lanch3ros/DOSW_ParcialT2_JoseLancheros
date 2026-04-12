@@ -537,6 +537,7 @@ Response 200 :
 
 ## punto 9 
 #### Diagrama Entidad-Relación
+![DiaEnt.png](docs/uml/DiaEnt.png)
 
 ## punto 10
 #### Índices para mejorar el rendimiento
