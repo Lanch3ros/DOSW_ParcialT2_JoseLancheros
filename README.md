@@ -333,7 +333,7 @@ Response 200 :
 
 ## punto 4 
 #### diagrama de componentes
-![DiaComp.png](docs/uml/DiaComp.png)
+![DiaGene.png](docs/uml/DiaGene.png)
 
 ## punto 5 
 #### Cuando las capas de un proyecto no están bien separadas surgen varios problemas graves como los siguientes
@@ -355,6 +355,20 @@ Response 200 :
 
 ## punto 8 
 #### Diagrama de Clases y Patrón de Estados
+
+### Patrón de software para los estados del pedido:
+El patrón recomendado para manejar los estados del pedido es el **State Pattern** (Patrón de Estado).
+
+**¿Por qué?** El pedido tiene 4 estados y el comportamiento cambia radicalmente dependiendo del estado actual. Sin este patrón, la lógica de transiciones termina siendo una cadena de `if/else` o `switch` dentro del servicio, que crece con cada nuevo estado y es difícil de mantener.
+
+Con el State Pattern, cada estado encapsula sus propias reglas de transición:
+
+<<interface>>
+OrderState
++ toEnPreparacion(): void
++ toEntregado(): void
++ cancel(): void
+
 
 ## punto 9 
 #### Diagrama Entidad-Relación
