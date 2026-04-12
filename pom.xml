@@ -1,92 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>4.0.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>edu.dosw.parcial</groupId>
-	<artifactId>DOSW-ParcialT2</artifactId>
+	<artifactId>ECI-XPRESS</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+
 	<properties>
 		<java.version>21</java.version>
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<jjwt.version>0.12.6</jjwt.version>
 	</properties>
-	<dependencies>
 
-		<!-- Spring Boot - Starter base -->
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
-		<!-- Spring Boot - Web (REST controllers, MVC) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!-- JPA - Persistencia Relacional (Spring Data JPA + Hibernate) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 
-		<!-- Driver PostgreSQL (base de datos relacional en producción) -->
+		<!-- PostgreSQL - Driver para persistencia relacional -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- H2 - Base de datos en memoria para desarrollo local -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!-- JWT - Spring Security (autenticación y autorización) -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<!-- JWT - API principal de JJWT -->
+		<!-- JWT -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
 			<version>${jjwt.version}</version>
 		</dependency>
-
-		<!-- JWT - Implementación en tiempo de ejecución de JJWT -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-impl</artifactId>
 			<version>${jjwt.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
-		<!-- JWT - Soporte Jackson para serialización de claims -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-jackson</artifactId>
@@ -94,53 +69,48 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Lombok - Reducción de código boilerplate (getters, setters, constructores) -->
+		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
 
-		<!-- MapStruct - Mapeo automático entre objetos (entidades, DTOs) -->
+		<!-- MapStruct -->
 		<dependency>
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 			<version>${mapstruct.version}</version>
 		</dependency>
 
-		<!-- Swagger / SpringDoc OpenAPI - Documentación automática de la API REST -->
+		<!-- Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.8.8</version>
 		</dependency>
 
-		<!-- SLF4J - API de logging (implementación provista por Logback en Spring Boot) -->
+		<!-- SLF4J -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 
-		<!-- JUnit y Mockito - Pruebas unitarias e integración (incluye JUnit 5 y Mockito) -->
+		<!-- Tests -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Spring Security Test - Soporte para pruebas con seguridad -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>
 		<plugins>
-
-			<!-- Spring Boot Maven Plugin - Empaquetado y ejecución de la aplicación -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -154,24 +124,20 @@
 				</configuration>
 			</plugin>
 
-			<!-- Maven Compiler Plugin - Configuración de procesadores de anotaciones (Lombok + MapStruct) -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<annotationProcessorPaths>
-						<!-- Lombok debe ir antes que MapStruct -->
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 						</path>
-						<!-- Binding para compatibilidad Lombok + MapStruct -->
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok-mapstruct-binding</artifactId>
 							<version>0.2.0</version>
 						</path>
-						<!-- Procesador de anotaciones de MapStruct -->
 						<path>
 							<groupId>org.mapstruct</groupId>
 							<artifactId>mapstruct-processor</artifactId>
@@ -181,35 +147,45 @@
 				</configuration>
 			</plugin>
 
-			<!-- Jacoco - Cobertura de código en pruebas -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.12</version>
 				<executions>
 					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
+						<goals><goal>prepare-agent</goal></goals>
 					</execution>
 					<execution>
 						<id>report</id>
 						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
+						<goals><goal>report</goal></goals>
+					</execution>
+					<execution>
+						<id>check</id>
+						<goals><goal>check</goal></goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.70</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 
-			<!-- SonarQube - Análisis estático de calidad del código -->
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>4.0.0.4121</version>
 			</plugin>
-
 		</plugins>
 	</build>
-
 </project>

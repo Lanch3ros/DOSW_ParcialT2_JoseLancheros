@@ -43,6 +43,7 @@ target/
 .claude/
 .claudelogs/
 claude.json
+ROADMAP.md
 
 ### NetBeans ###
 /nbproject/private/
