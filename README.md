@@ -524,6 +524,7 @@ Response 200 :
 
 ## punto 6
 #### diagrama de componentes especificos
+![DiaComEsp.png](docs/uml/DiaComEsp.png)
 
 ## punto 7 
 #### Diferencia entre Validador, Utilidad y Servicio
